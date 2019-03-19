@@ -29,7 +29,7 @@ config.module
     .add(path.resolve(cwd, 'src'))
     .end()
   .use('babel')
-      .loader('babel-loader')
+      .loader(require.resolve('babel-loader'))
       .options({
         presets: [
           ['@babel/preset-env', { modules: false }]
@@ -41,4 +41,4 @@ config.module
 //   .plugin('clean')
 //     .use(CleanPlugin, [['dist'], { root: '/dir' }]);
 // Export the completed configuration object to be consumed by webpack
-module.exports = config.toConfig();
+module.exports = config;
