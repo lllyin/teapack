@@ -1,0 +1,29 @@
+{
+  "name": "teapack",
+  "version": "0.0.1",
+  "description": "Just always be fresh . 永远基于最新webpack及库封装的脚手架",
+  "main": "build.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [
+    "webpack-cli",
+    "teapack"
+  ],
+  "author": "andesome",
+  "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "chalk": "^2.4.2",
+    "commander": "^2.19.0",
+    "react-dev-utils": "^8.0.0",
+    "webpack": "^4.29.6",
+    "webpack-chain": "^5.2.2"
+  },
+  "devDependencies": {
+    "babel-loader": "^8.0.5",
+    "eslint": "^5.15.2",
+    "webpack-cli": "^3.3.0"
+  }
+}
