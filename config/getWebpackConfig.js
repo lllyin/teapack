@@ -8,7 +8,6 @@ const config = new Config();
 // 执行命令的路径
 const cwd = process.cwd();
 
-config.mode('development');
 // Make configuration changes using the chain API.
 // Every API call tracks a change to the stored configuration.
 
@@ -32,7 +31,8 @@ config.module
       .loader(require.resolve('babel-loader'))
       .options({
         presets: [
-          ['@babel/preset-env', { modules: false }]
+          require.resolve('@babel/preset-env'),
+          require.resolve('@babel/preset-react')
         ]
       });
 

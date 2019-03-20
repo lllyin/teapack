@@ -6,9 +6,23 @@ const { printFileSizesAfterBuild } = require('react-dev-utils/FileSizeReporter')
 const Config = require('./config/getWebpackConfig');
 const program = require('./config/cmd-options');
 
-const webpackConfig = Config.toConfig();
+// 开发模式
+if(program.development){
+  Config.mode('development');
+  Config.devtool('eval-source-map');
+}
+// 生产模式
+if(program.production){
+  Config.mode('production');
+  // Config.devtool('eval-source-map');
+}
 
-program.debug && console.info(Config.toString());
+// 调试模式
+if(program.debug){
+  console.info(Config.toString());
+}
+
+const webpackConfig = Config.toConfig();
 
 // These sizes are pretty large. We'll warn for bundles exceeding them.
 const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024;
