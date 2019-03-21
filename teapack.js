@@ -22,7 +22,7 @@ if (program.args[0] === 'dev') {
 }
 
 // 生产构建
-if (program.production) {
+if (program.args[0] === 'build') {
   const Config = getWebpackConfig({ mode: 'production' });
   const webpackConfig = Config.toConfig();
 
