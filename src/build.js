@@ -2,20 +2,35 @@ const webpack = require('webpack');
 const chalk = require('chalk');
 const { printFileSizesAfterBuild } = require('react-dev-utils/FileSizeReporter');
 const program = require('./config/cmd-options');
+const { handleWebpackErrors, handleWebpackWarnings } = require('./utils/util');
 
-function build({ webpackConfig }) {
+const debug = require('debug')('teapack:build');
+
+function build({ 
+  webpackConfig,
+  onFail = handleWebpackErrors,
+  onWarn = handleWebpackWarnings
+}) {
   const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024;
   const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
 
+  debug('build start');
   webpack(webpackConfig, (err, stats) => {
-    console.log('打包开始...');
+    debug('build done');
+
+    console.log('test: 打包开始了...');
     if (err) {
       console.log(chalk.red('  Start failed with errors.\n'));
       console.error(err);
     }
 
+    if (stats.hasWarnings()) {
+      onWarn(stats);
+    }
+
     if (stats.hasErrors()) {
       console.log(chalk.red('  Build failed with errors.\n'));
+      onFail(stats);
       program.debug && console.error(stats);
       process.exit(1);
     }
