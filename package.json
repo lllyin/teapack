@@ -36,5 +36,13 @@
     "postcss-loader": "^3.0.0",
     "style-loader": "^0.23.1",
     "webpack-cli": "^3.3.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andesome/teapack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Andesome/teapack/issues"
+  },
+  "homepage": "https://github.com/Andesome/teapack#readme"
 }
