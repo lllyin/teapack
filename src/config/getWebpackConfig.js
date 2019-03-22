@@ -1,12 +1,11 @@
-const devWebpackConfig = require('./webpack-dev.config');
-const prodWebpackConfig = require('./webpack-prod.config');
-
 function getWebpackConfig({ mode = 'production' }) {
   if (mode === 'development') {
-    return devWebpackConfig;
+    return require('./webpack-dev.config');
   }
 
-  return prodWebpackConfig;
+  return require('./webpack-prod.config');
 }
+
+// console.log(getWebpackConfig({mode: 'development'}).toString())
 
 module.exports = getWebpackConfig;
