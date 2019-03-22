@@ -1,4 +1,6 @@
 const path = require('path');
+const chalk = require('chalk');
+
 
 const workpath = path.resolve(__dirname);
 
@@ -12,7 +14,9 @@ function handleWebpackErrors(stats) {
   const { errors = [] } = info;
 
   errors.forEach(err => {
-    console.error(err.toString());
+    const errStr = err.toString();
+
+    console.error(chalk.red(errStr));
   });
 }
 
@@ -22,7 +26,9 @@ function handleWebpackWarnings(stats){
   const { warnings = [] } = info;
 
   warnings.forEach(warn => {
-    console.warn(warn.toString());
+    const warnStr = warn.toString();
+    
+    console.warn(chalk.yellow(warnStr));
   });
 }
 

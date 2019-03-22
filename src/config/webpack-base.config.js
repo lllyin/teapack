@@ -35,16 +35,23 @@ config.module
 
 config.module
   .rule('less')
-  .test(/\.less$/)
+  .test(/\.(le|c)ss$/)
   .use('style')
     .loader(require.resolve('style-loader'))
     .end()
   .use('css')
     .loader(require.resolve('css-loader'))
     .options({
-      sourceMap: true,
-      modules: true,
+      sourceMap: false,
+      modules: false,
+      importLoaders: 2,
       localIdentName: "[local]___[hash:base64:5]"
+    })
+    .end()
+  .use('post-css')
+    .loader(require.resolve('postcss-loader'))
+    .options({
+      plugins: [() => [require.resolve('autoprefixer')]]
     })
     .end()
   .use('less')

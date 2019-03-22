@@ -28,5 +28,4 @@ if (program.args[0] === 'build') {
 
   program.debug && debugTeapack(Config);
   build({ cwd, webpackConfig });
-  // Config.devtool('eval-source-map');
 }

@@ -34,13 +34,17 @@ function dev({
     disableHostCheck: true,
     compress: true,
     clientLogLevel: 'none',
+    progress: true,
     hot: true,
-    quiet: true,
+    quiet: false,
+    stats: { colors: true },
     headers: {
       'access-control-allow-origin': '*',
     },
     publicPath: webpackConfig.output.publicPath,
     watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000,
       ignored: /node_modules/,
     },
     historyApiFallback: false,
@@ -70,6 +74,7 @@ function dev({
     ...(webpackConfig.devServer || {}),
   };
 
+  WebpackDevServer.addDevServerEntrypoints(webpackConfig, serverConfig);
   const server = new WebpackDevServer(compiler, serverConfig);
 
   ['SIGINT', 'SIGTERM'].forEach(signal => {
@@ -93,7 +98,7 @@ function dev({
     if (isInteractive) {
       clearConsole();
     }
-    console.log(chalk.cyan('Starting the development server...\n'));
+    console.log(chalk.cyan(`Starting the development server on ${port}...\n'`));
     // send({ type: STARTING });
     if (afterServer) {
       afterServer(server);
