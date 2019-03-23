@@ -19,7 +19,7 @@ config
   .end()
   // Modify output settings
   .output.path(path.resolve(cwd, 'dist'))
-  .filename('[name].bundle.js');
+  .filename('[name].bundle_[hash:8].js');
 
 // Create named rules which can be modified later
 config.module
@@ -44,7 +44,7 @@ config.module
     .use('file-loader')
       .loader(require.resolve('file-loader'))
       .options({
-        name: '[name][hash].[ext]',
+        name: '[name]_[hash:8].[ext]',
       })
 
 config.plugin('HtmlWebPackPlugin')
