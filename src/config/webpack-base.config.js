@@ -30,33 +30,22 @@ config.module
   .use('babel')
     .loader(require.resolve('babel-loader'))
     .options({
-      presets: [require.resolve('@babel/preset-env'), require.resolve('@babel/preset-react'), require.resolve('@babel/plugin-syntax-dynamic-import')],
+      presets: [require.resolve('@babel/preset-env'), require.resolve('@babel/preset-react')],
+      plugins: [ 
+        require.resolve('@babel/plugin-transform-runtime'),
+        [require.resolve('@babel/plugin-proposal-decorators'),{ "legacy": true }],
+        [require.resolve('@babel/plugin-proposal-class-properties'), {"loose" : true }],
+        require.resolve('@babel/plugin-syntax-dynamic-import')]
     });
 
 config.module
-  .rule('less')
-  .test(/\.(le|c)ss$/)
-  .use('style')
-    .loader(require.resolve('style-loader'))
-    .end()
-  .use('css')
-    .loader(require.resolve('css-loader'))
-    .options({
-      sourceMap: false,
-      modules: false,
-      importLoaders: 2,
-      localIdentName: "[local]___[hash:base64:5]"
-    })
-    .end()
-  .use('post-css')
-    .loader(require.resolve('postcss-loader'))
-    .options({
-      plugins: [() => [require.resolve('autoprefixer')]]
-    })
-    .end()
-  .use('less')
-    .loader(require.resolve('less-loader'))
-    .end();
+    .rule('image-file')
+    .test(/\.(png|svg|jpg|jpeg|gif)$/)
+    .use('file-loader')
+      .loader(require.resolve('file-loader'))
+      .options({
+        name: '[name][hash].[ext]',
+      })
 
 config.plugin('HtmlWebPackPlugin')
     .use(HtmlWebPackPlugin, [{
