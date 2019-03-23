@@ -27,8 +27,6 @@ function dev({
   // if(!port || !DEFAULT_PORT){
   //   return;
   // }
-
-  const compiler = webpack(webpackConfig);
   
   const serverConfig = {
     disableHostCheck: true,
@@ -75,6 +73,7 @@ function dev({
   };
 
   WebpackDevServer.addDevServerEntrypoints(webpackConfig, serverConfig);
+  const compiler = webpack(webpackConfig);
   const server = new WebpackDevServer(compiler, serverConfig);
 
   ['SIGINT', 'SIGTERM'].forEach(signal => {

@@ -4,12 +4,12 @@ const config = require('./webpack-base.config');
 const autoprefixer = require.resolve('autoprefixer');
 
 config.mode('development');
-config.devtool('eval-source-map');
+config.devtool('inline-source-map');
 
 
-config.devServer
-  .hot(true)
-  .inline(true);
+// config.devServer
+//   .hot(true)
+//   .inline(true);
 
 config.module
   .rule('less')
@@ -32,6 +32,7 @@ config.module
 
 config.plugin('clean-webpack')
     .use(CleanWebpackPlugin)
+    .before('HtmlWebPackPlugin')
     .end()
     .plugin('hmr')
     .use(webpack.HotModuleReplacementPlugin);
