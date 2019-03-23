@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const config = require('./webpack-base.config');
+const autoprefixer = require.resolve('autoprefixer');
 
 config.mode('development');
 config.devtool('eval-source-map');
@@ -23,12 +24,6 @@ config.module
       modules: true,
       importLoaders: 2,
       localIdentName: "[local]___[hash:base64:5]"
-    })
-    .end()
-  .use('post-css')
-    .loader(require.resolve('postcss-loader'))
-    .options({
-      plugins: [() => [require.resolve('autoprefixer')]]
     })
     .end()
   .use('less')

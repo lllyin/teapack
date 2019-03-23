@@ -1,3 +1,4 @@
+const autoprefixer = require.resolve('autoprefixer');
 const config = require('./webpack-base.config');
 
 config.mode('production');
@@ -21,7 +22,11 @@ config.module
   .use('post-css')
     .loader(require.resolve('postcss-loader'))
     .options({
-      plugins: [() => [require.resolve('autoprefixer')]]
+      plugins: () => [
+        require(autoprefixer)({
+          browsers : ['> 1%', 'last 2 versions']
+        })
+      ]
     })
     .end()
   .use('less')
