@@ -16,14 +16,12 @@ tea: 绿色、健康、休闲
 
 ```
 npm install teapack --save-dev
-```
-or
-```
+// or
 yarn add teapack --dev
 ```
 
 ## Usage
-在项目目录添加`package.json`添加：
+在项目根目录下的`package.json`中添加：
 ```json
 {
   "scripts": {
@@ -42,7 +40,31 @@ yarn run dev
 yarn run dev
 ```
 
-## 命令行参数
+### 必要的规范
+1. 打包入口文件必须是项目根目录 下`src`目录下的`index.js`文件。
+
+2. 如果有模板文件，必须放在根目录下的`public`下的`index.html`。
+
+```
+// 项目解构树形图
+
+├── README.md
+├── node_modules
+├── public
+│   ├── index.js				//模板文件*
+├── src
+│   ├── App.js
+│   ├── index.js				//入口文件*
+├── package.json
+└── yarn.lock		   
+```
+
+> `*` 必须要遵循
+
+### 适用场景
+- React技术栈
+
+### 命令行参数
 - -d,--debug  开启调试模式
 
 1. 启动失败，控制台输出详细日志
