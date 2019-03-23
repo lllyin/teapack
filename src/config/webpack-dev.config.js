@@ -4,7 +4,7 @@ const config = require('./webpack-base.config');
 const autoprefixer = require.resolve('autoprefixer');
 
 config.mode('development');
-config.devtool('inline-source-map');
+config.devtool('cheap-module-eval-source-map');
 
 
 // config.devServer
