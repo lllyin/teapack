@@ -6,9 +6,11 @@ Just always be fresh.
 
 ## Why is teapack
 
-tea: 绿色、休闲、健康
+tea: 绿色、健康、休闲
 
-希望它能把你省下更多的时间，泡一杯tea, 享受休闲健康的生活。
+面对webpack繁琐的配置，明明按照文档的配置，但是运行时控制台还是频频报错，是人性的扭曲，还是道德的沦丧。如果你也曾为此焦头烂额。可以试试`teapack`。
+
+**希望它能把你省下更多的时间，泡一杯tea, 享受健康、休闲的生活。**
 
 ## Install
 
@@ -36,7 +38,7 @@ yarn add teapack --dev
 yarn run dev
 ```
 ```
-// 构建发布
+// 生产构建
 yarn run dev
 ```
 
@@ -53,9 +55,27 @@ yarn run dev
 ## 适用场景
 - React技术栈
 
+## 待做事项
+- [x] React技术栈支持
+- [x] 支持代码切割（code split）
+- [x] css3样式添加浏览器兼容(autoprefixer)
+- [ ] 开发支持热更新 
+		现在热更新是没有问题了，控制台可以看到每次修改文件，都自动构建了，但是浏览器没有自动刷新。目前正在查找原因，希望大佬支持。
+- [ ] Vue技术栈支持
+- [ ] 打包进度人性化提示
+- [ ] 开放自定义配置
+
 ## 底层
 
+- babel 7.x
 - webpack 4.x
-- babel7
-- webpack-chin
 - webpack loaders
+- webpack-chain
+- webpack-dev-serve
+
+
+
+## 感谢
+
+
+
