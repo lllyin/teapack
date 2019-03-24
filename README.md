@@ -93,11 +93,12 @@ yarn run dev
    
    原因：使用热更新局部刷新时，在webpck.config.js不要在添加devServer选项了. [文档地址](https://webpack.js.org/guides/hot-module-replacement/#via-the-nodejs-api)
 
-- [ ] Vue技术栈支持
-
-- [ ] 打包进度人性化提示
+- [x] 打包进度人性化提示
 
 - [ ] 开放自定义配置
+
+- [ ] Vue技术栈支持
+
 
 ## 底层
 
