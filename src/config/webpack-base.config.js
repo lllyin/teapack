@@ -2,6 +2,7 @@
 // constructor function for creating a configuration API.
 const Config = require('webpack-chain');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 
 // Instantiate the configuration with a new API
@@ -47,11 +48,14 @@ config.module
         name: '[name]_[hash:8].[ext]',
       })
 
-config.plugin('HtmlWebPackPlugin')
-    .use(HtmlWebPackPlugin, [{
-      template: path.resolve(cwd, 'public/index.html'),
-      filename: 'index.html'
-    }])
+config.plugin('clean-webpck')
+        .use(CleanWebpackPlugin)
+        .end()
+      .plugin('HtmlWebPackPlugin')
+        .use(HtmlWebPackPlugin, [{
+          template: path.resolve(cwd, 'public/index.html'),
+          filename: 'index.html'
+        }])
 // console.log(config.toString())
 // config
 //   .plugin('clean')

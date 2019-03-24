@@ -1,7 +1,5 @@
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const config = require('./webpack-base.config');
-const autoprefixer = require.resolve('autoprefixer');
 
 config.mode('development');
 config.devtool('cheap-module-eval-source-map');
@@ -30,11 +28,7 @@ config.module
     .loader(require.resolve('less-loader'))
     .end();
 
-config.plugin('clean-webpack')
-    .use(CleanWebpackPlugin)
-    .before('HtmlWebPackPlugin')
-    .end()
-    .plugin('hmr')
+config.plugin('hmr')
     .use(webpack.HotModuleReplacementPlugin);
     
 
