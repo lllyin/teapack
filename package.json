@@ -42,7 +42,8 @@
     "webpack-dev-server": "^3.2.1"
   },
   "devDependencies": {
-    "eslint": "^5.15.2"
+    "eslint": "^5.15.2",
+    "progress": "^2.0.3"
   },
   "repository": {
     "type": "git",
