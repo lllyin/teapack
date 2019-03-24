@@ -1,6 +1,15 @@
 const path = require('path');
 const chalk = require('chalk');
+const ProgressBar = require('progress');
 
+var green = '\u001b[42m \u001b[0m';
+const bar = new ProgressBar(':title [:bar] :percent :etas', {
+  complete: green,
+  incomplete: ' ',
+  width: 30,
+  total: 1,
+  clear: true
+});
 
 const workpath = path.resolve(__dirname);
 
@@ -32,9 +41,18 @@ function handleWebpackWarnings(stats){
   });
 }
 
+// hanle webpack build progress
+function handleWebpackProgress(percentage, message){
+  bar.tick(percentage, {title: message.toString()});
+  if(bar.complete){
+    bar.tick(percentage, {title: 'completed'});
+  }
+}
+
 module.exports = {
   workpath,
   getWorkPath,
   handleWebpackErrors,
-  handleWebpackWarnings
+  handleWebpackWarnings,
+  handleWebpackProgress
 };

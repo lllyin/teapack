@@ -18,7 +18,7 @@ function build({
   webpack(webpackConfig, (err, stats) => {
     debug('build done');
 
-    console.log('打包开始了...');
+    // console.log('打包开始了...');
     if (err) {
       console.log(chalk.red('  Start failed with errors.\n'));
       console.error(err);

@@ -3,7 +3,10 @@
 const Config = require('webpack-chain');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
 const path = require('path');
+
+const { handleWebpackProgress } = require('../utils/util')
 
 // Instantiate the configuration with a new API
 const config = new Config();
@@ -56,6 +59,9 @@ config.plugin('clean-webpck')
           template: path.resolve(cwd, 'public/index.html'),
           filename: 'index.html'
         }])
+        .end()
+      .plugin('watch-build-progress')
+        .use(webpack.ProgressPlugin, [handleWebpackProgress])
 // console.log(config.toString())
 // config
 //   .plugin('clean')

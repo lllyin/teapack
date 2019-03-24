@@ -97,7 +97,7 @@ function dev({
     if (isInteractive) {
       clearConsole();
     }
-    console.log(chalk.cyan(`Starting the development server on ${port}...\n'`));
+    console.log(chalk.cyan(`\n Starting the development server on \n http://localhost:${port}\n`));
     // send({ type: STARTING });
     if (afterServer) {
       afterServer(server);
