@@ -7,8 +7,8 @@ var green = '\u001b[42m \u001b[0m';
 const bar = new ProgressBar(':title [:bar] :percent :etas', {
   complete: green,
   incomplete: ' ',
-  width: 30,
-  total: 1,
+  width: 36,
+  total: 100,
   clear: true
 });
 
@@ -55,7 +55,7 @@ function handleWebpackMsg(msg){
 
 // hanle webpack build progress
 function handleWebpackProgress(percentage, message){
-  bar.tick(percentage, {title: handleWebpackMsg(message)});
+  bar.update(percentage, {title: handleWebpackMsg(message)});
   if(bar.complete){
     process.env.CLEAR_CONSOLE = '1';
     if(process.env.NODE_ENV !== 'development'){
