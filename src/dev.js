@@ -9,8 +9,6 @@ const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 8000;
 const HOST = process.env.HOST || '0.0.0.0';
 // const PROTOCOL = process.env.HTTPS ? 'https' : 'http';
 
-process.env.NODE_ENV = 'development';
-
 function dev({
   webpackConfig,
   contentBase,
@@ -27,7 +25,8 @@ function dev({
   // if(!port || !DEFAULT_PORT){
   //   return;
   // }
-  
+  process.env.NODE_ENV = 'development';
+
   const serverConfig = {
     disableHostCheck: true,
     compress: true,

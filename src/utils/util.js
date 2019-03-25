@@ -1,6 +1,7 @@
 const path = require('path');
 const chalk = require('chalk');
 const ProgressBar = require('progress');
+const clearConsole = require('../clearConsole');
 
 var green = '\u001b[42m \u001b[0m';
 const bar = new ProgressBar(':title [:bar] :percent :etas', {
@@ -41,11 +42,26 @@ function handleWebpackWarnings(stats){
   });
 }
 
+function handleWebpackMsg(msg){
+  const msgMap = {
+    'after module and chunk tree optimization': 'optimization',
+    'building' : 'building'
+  }
+
+  const newMsg = msgMap[msg];
+
+  return newMsg || msg; 
+}
+
 // hanle webpack build progress
 function handleWebpackProgress(percentage, message){
-  bar.tick(percentage, {title: message.toString()});
+  bar.tick(percentage, {title: handleWebpackMsg(message)});
   if(bar.complete){
-    bar.tick(percentage, {title: 'completed'});
+    process.env.CLEAR_CONSOLE = '1';
+    if(process.env.NODE_ENV !== 'development'){
+      clearConsole();
+    }
+    // bar.tick(percentage, {title: 'completed'});
   }
 }
 

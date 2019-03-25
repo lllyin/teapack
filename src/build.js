@@ -14,6 +14,8 @@ function build({
   const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024;
   const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
 
+  process.env.NODE_ENV = 'production';
+
   debug('build start');
   webpack(webpackConfig, (err, stats) => {
     debug('build done');
