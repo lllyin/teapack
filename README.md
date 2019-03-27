@@ -25,7 +25,7 @@ yarn add teapack --dev
 ```json
 {
   "scripts": {
-    "dev": "teapack dev",
+    "start": "teapack dev",
     "build": "teapack build",
   },
 }
@@ -33,12 +33,16 @@ yarn add teapack --dev
 然后:
 ```
 // 开发调试
-yarn run dev
-```
-```
+yarn start
+
 // 生产构建
 yarn run dev
 ```
+
+### Demo
+
+- [Simple React App with Teapack](https://github.com/Andesome/teapack-demo)
+- [React Todo List with Teapack](https://github.com/Andesome/react-hooks-todo)
 
 ### 必要的规范
 1. 打包入口文件必须是项目根目录 下`src/index.js`文件。
@@ -85,6 +89,7 @@ yarn run dev
 - [x] css3样式添加浏览器兼容(autoprefixer)
 
 - [x] 开发支持热更新 
+
    ~~现在热更新是没有问题了，控制台可以看到每次修改文件，都自动构建了，但是浏览器没有自动刷新。目前正在查找原因，希望大佬支持。~~
 
    已解决。
