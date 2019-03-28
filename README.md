@@ -16,7 +16,9 @@ tea: 绿色、健康、休闲
 
 ```
 npm install teapack --save-dev
+
 // or
+
 yarn add teapack --dev
 ```
 
@@ -31,11 +33,14 @@ yarn add teapack --dev
 }
 ```
 然后:
-```
-// 开发调试
-yarn start
 
-// 生产构建
+开发调试
+```
+yarn start
+```
+
+生产构建
+```
 yarn run dev
 ```
 
