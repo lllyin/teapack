@@ -41,8 +41,7 @@ yarn run dev
 
 ### Demo
 
-- [Simple React App with Teapack](https://github.com/Andesome/teapack-demo)
-- [React Todo List with Teapack](https://github.com/Andesome/react-hooks-todo)
+- [React Hooks Todo with Teapack](https://github.com/Andesome/react-hooks-todo)
 
 ### 必要的规范
 1. 打包入口文件必须是项目根目录 下`src/index.js`文件。
