@@ -41,7 +41,7 @@ yarn start
 
 生产构建
 ```
-yarn run dev
+yarn run build
 ```
 
 ### Demo
@@ -59,7 +59,7 @@ yarn run dev
 ├── README.md
 ├── node_modules
 ├── public
-│   ├── index.js				//模板文件*
+│   ├── index.html				//模板文件*
 ├── src
 │   ├── App.js
 │   ├── index.js				//入口文件*
