@@ -85,6 +85,17 @@ yarn run build
 ## 适用场景
 - React技术栈
 
+## 可配置项
+虽然默认项可以满足绝大部分业务场景，但针对特殊场景，用户可以自定义配置文件。
+在项目根目录下新建`teapack.config.js`.
+```js
+   module.exports = {
+     cssModules: true,            //  是否开启cssModules默认为true
+     devtool: 'source-map'        //  webapack的devtool模式
+  }
+```
+除`cssModules`配置项以外，其余皆和`webpack 4.x`官方配置一致。可以参考[官网配置](https://webpack.js.org/concepts).
+
 ## 待做事项
 - [x] React技术栈支持
 
@@ -106,7 +117,7 @@ yarn run build
 
 - [ ]  服务启动打开浏览器、 端口冲突自动切换 
 
-- [ ] 开放自定义配置
+- [x] 开放自定义配置
 
 - [ ] Vue技术栈支持
 
