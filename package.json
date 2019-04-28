@@ -39,11 +39,11 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-chain": "^5.2.2",
-    "webpack-dev-server": "^3.2.1"
+    "webpack-dev-server": "^3.2.1",
+    "progress": "^2.0.3"
   },
   "devDependencies": {
-    "eslint": "^5.15.2",
-    "progress": "^2.0.3"
+    "eslint": "^5.15.2"
   },
   "repository": {
     "type": "git",

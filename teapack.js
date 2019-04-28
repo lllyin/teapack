@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const getWebpackConfig = require('./src/config/getWebpackConfig');
+const getWebpackConfig = require('./src/utils/getWebpackConfig');
 const program = require('./src/config/cmd-options');
 const dev = require('./src/dev');
 const build = require('./src/build');
