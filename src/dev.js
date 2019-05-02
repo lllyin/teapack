@@ -1,13 +1,19 @@
 const webpack = require('webpack');
-const chalk = require('chalk');
+const path = require('path');
 const WebpackDevServer = require('webpack-dev-server');
+const { checkBrowsers } = require('react-dev-utils/browsersHelper');
+const openBrowser = require('react-dev-utils/openBrowser');
+const {
+  choosePort,
+  prepareUrls,
+} = require('react-dev-utils/WebpackDevServerUtils');
 const errorOverlayMiddleware = require('./errorOverlayMiddleware');
 const clearConsole = require('./clearConsole');
 
 const isInteractive = process.stdout.isTTY;
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 8000;
 const HOST = process.env.HOST || '0.0.0.0';
-// const PROTOCOL = process.env.HTTPS ? 'https' : 'http';
+const PROTOCOL = process.env.HTTPS ? 'https' : 'http';
 
 function dev({
   webpackConfig,
@@ -31,10 +37,10 @@ function dev({
     disableHostCheck: true,
     compress: true,
     clientLogLevel: 'none',
-    progress: true,
+    progress: false,
     hot: true,
-    quiet: false,
-    stats: { colors: true },
+    quiet: true,
+    stats: { colors: true},
     headers: {
       'access-control-allow-origin': '*',
     },
@@ -88,20 +94,32 @@ function dev({
     beforeServer(server);
   }
 
-  server.listen(port, HOST, err => {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    if (isInteractive) {
-      clearConsole();
-    }
-    console.log(chalk.cyan(`\n Starting the development server on \n http://localhost:${port}\n`));
-    // send({ type: STARTING });
-    if (afterServer) {
-      afterServer(server);
-    }
-  });
+  checkBrowsers(path.resolve(process.cwd(), '.'), isInteractive)
+    .then(() => {
+      // We attempt to use the default port but if it is busy, we offer the user to
+      // run on a different port. `choosePort()` Promise resolves to the next free port.
+      return choosePort(HOST, port);
+    })
+    .then(port => {
+      const Urls = prepareUrls(PROTOCOL, HOST, port);
+
+      process.env.Urls = JSON.stringify(Urls);
+      process.env.PORT = port;
+      server.listen(port, HOST, err => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        if (isInteractive) {
+          clearConsole();
+        }
+        // send({ type: STARTIN });
+        if (afterServer) {
+          afterServer(server);
+        }
+        openBrowser(Urls.localUrlForBrowser);
+      });
+    })
 }
 
 module.exports = dev;
