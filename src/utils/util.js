@@ -1,6 +1,7 @@
 const path = require('path');
 const chalk = require('chalk');
 const ProgressBar = require('progress');
+const clearConsole = require('react-dev-utils/clearConsole');
 
 var green = '\u001b[42m \u001b[0m';
 const bar = new ProgressBar(':title [:bar] :percent :etas', {
@@ -58,12 +59,15 @@ function handleWebpackProgress(percentage, message){
   if(bar.complete){
     if(process.env.NODE_ENV === 'development'){
       const Urls = JSON.parse(process.env.Urls);
-
-      console.log(chalk.cyan(`\n Starting the development server on \n 
-          ${Urls.lanUrlForTerminal}\n
-          ${Urls.localUrlForTerminal}
-        `) 
-      );
+      
+      setTimeout(() => {
+        clearConsole();
+        console.log(chalk.cyan(`\n 1Starting the development server on \n 
+            ${Urls.lanUrlForTerminal}\n
+            ${Urls.localUrlForTerminal}
+          `) 
+        );
+      }, 1000)
 
     }
   }

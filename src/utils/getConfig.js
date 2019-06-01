@@ -12,7 +12,7 @@ module.exports = function() {
     fs.accessSync(webpackFile);
   } catch (e) {
     isExit = false;
-    console.error(`无法访问${webpackFile}`);
+    // console.error(`无法访问${webpackFile}`);
   }
 
   return isExit ? require(webpackFile) : {}

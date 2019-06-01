@@ -7,8 +7,9 @@ const {
   choosePort,
   prepareUrls,
 } = require('react-dev-utils/WebpackDevServerUtils');
+const clearConsole = require('react-dev-utils/clearConsole');
+
 const errorOverlayMiddleware = require('./errorOverlayMiddleware');
-const clearConsole = require('./clearConsole');
 
 const isInteractive = process.stdout.isTTY;
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 8000;
