@@ -2,7 +2,7 @@
 // constructor function for creating a configuration API.
 const Config = require('webpack-chain');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
@@ -62,6 +62,7 @@ config.plugin('clean-webpck')
         .end()
       .plugin('watch-build-progress')
         .use(webpack.ProgressPlugin, [handleWebpackProgress])
+        .end();
 // console.log(config.toString())
 // config
 //   .plugin('clean')
