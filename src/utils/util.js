@@ -62,7 +62,7 @@ function handleWebpackProgress(percentage, message){
       
       setTimeout(() => {
         clearConsole();
-        console.log(chalk.cyan(`\n 1Starting the development server on \n 
+        console.log(chalk.cyan(`\n Starting the development server on \n 
             ${Urls.lanUrlForTerminal}\n
             ${Urls.localUrlForTerminal}
           `) 
